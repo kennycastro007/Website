@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+
+  <link href="/css/main.css" rel="stylesheet">
+
+  <title>Kenny Castro-Monroy | Software Developer</title>
+</head>
+
+<body>
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Kenny Castro-Monroy</h1>
+      <p>
+        I’m a C++/Javascript developer from New Jersey. I mainly focus on backend development but have some experience
+        writing front-end code. I also spend some free time learning how to play the piano. If you want to get in touch:
+        <a href="#footer" class="button">Click here!</a>
+      </p>
+      <a href="https://www.github.com/kennycastro007"><i class="fab fa-github"></i></a>
+      <!-- <a href="https://www.linkedin.com/in/kenny-castro-monroy-094267140/"><i class="fab fa-linkedin"></i></a> -->
+      <a download id="resume" href="/resume.pdf"> Resume <i class="fas fa-download"></i></a>
+      <a href="#projects"><i id="continue-arrow" class="fas fa-chevron-down"></i></a>
+    </div>
+  </div>
+
+  <section id="projects">
+    <h1>Projects</h1>
+    <div class="container">
+      <div class="left">
+        <div class="card">
+          <img src="/images/blackjack-thumbnail.png" alt="placeholder">
+          <div class="card-content">
+            <h3>BlackJack</h3>
+            <h4 class="muted"><i>C++, Cross-Platform Development</i></h4>
+            <p>A console version of the popular casino card game, blackjack. Utilizes Cross-platform methods to allow
+              for unicode to be displayed on both Unix-based systems and Windows without having to rewrite the entire
+              program.</p>
+            <a href="https://github.com/kennycastro007/Blackjack" class="btn">&gt;&gt; View Code &lt;&lt;</a>
+            <!-- <a class="btn disabled">&gt;&gt; Live(Unavailable) &lt;&lt;</a> -->
+          </div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="card">
+          <img src="/images/blog-thumbnail.png" alt="placeholder">
+          <div class="card-content">
+            <h3>Blog</h3>
+            <h4 class="muted"><i>Javascript, Node.js, Express, MySQL, AJAX</i></h4>
+            <p>A blog made using Node.js, Express and many many middlewares, including SQL and Sequelize for ORM. This
+              was made simply for the purpose of familiarizing myself with Node.js On the front-end, I used bootstrap
+              and AJAX to allow login forms via modals.</p>
+            <a href="https://github.com/kennycastro007/blog" class="btn">&gt;&gt; Code &lt;&lt;</a>
+            <a href="https://sheltered-basin-18744.herokuapp.com/" class="btn">&gt;&gt; Live &lt;&lt;</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    </div>
+    </div>
+  </section>
+  <footer id="footer">
+    <div class="container">
+      <div class="content">
+        <form id="messageForm" action="/email" method="POST">
+          <h3>Send me message!</h3>
+          <div class="form-control">
+            <input type="text" name="name" id="name" placeholder="Name" required />
+          </div>
+
+          <div class="form-control">
+            <input type="email" name="email" id="email" placeholder="Email" required />
+          </div>
+
+          <div class="form-control">
+            <textarea name="message" id="message" cols="30" rows="10" placeholder="Message" required></textarea>
+          </div>
+
+          <input type="submit" value="Send">
+        </form>
+        <a href="https://www.github.com/kennycastro007"><i class="fab fa-github"></i> Github</a>
+
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://kit.fontawesome.com/e4e359b000.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    let form = document.querySelector('#messageForm');
+
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.querySelector('#name').value;
+      const email = document.querySelector('#email').value;
+      const message = document.querySelector('#message').value;
+
+      axios.post('/email', {
+        name: name,
+        email: email,
+        message: message
+      }).then((result) => {
+        if (result.error) {
+          console.log(result.error);
+        } else {
+          form.reset();
+          alert('Message sent!');
+        }
+      }).catch((err) => {
+        console.log(err);
+      });
+    });
+  </script>
+</body>
+
+</html>
