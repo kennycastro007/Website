@@ -41,11 +41,12 @@ body {
 
 .hero-content .button {
   font-size: 1em;
+  background: #e3c3aa;
 }
 
-.hero-content a:hover {
+/* .hero-content a:hover {
   opacity: 75%;
-}
+} */
 
 .hero-content a#resume {
   font-size: 1.5em;
