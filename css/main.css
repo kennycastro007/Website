@@ -42,6 +42,7 @@ body {
 .hero-content .button {
   font-size: 1em;
   background: #e3c3aa;
+  border: 1px solid #000;
 }
 
 /* .hero-content a:hover {
